@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한진건설 - 통영/경남 철거 및 폐기물 전문</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .faq-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .faq-content.active {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .chevron.active {
+            transform: rotate(180deg);
+        }
+        /* Custom scrollbar for aesthetic */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ea580c; /* Orange-600 */
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c2410c; /* Orange-700 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <i class="fa-solid fa-helmet-safety text-orange-600 text-3xl mr-2"></i>
+                        <span class="font-black text-2xl text-slate-800 tracking-tighter">한진건설</span>
+                    </a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#services" class="text-gray-600 hover:text-orange-600 font-medium transition text-sm">사업분야</a>
+                    <a href="#portfolio" class="text-gray-600 hover:text-orange-600 font-medium transition text-sm">현장갤러리</a>
+                    <a href="#equipment" class="text-gray-600 hover:text-orange-600 font-medium transition text-sm">보유장비</a>
+                    <a href="#process" class="text-gray-600 hover:text-orange-600 font-medium transition text-sm">진행절차</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-orange-600 font-medium transition text-sm">고객후기</a>
+                    <a href="#contact" class="bg-slate-900 text-white px-5 py-2 rounded-lg font-bold hover:bg-slate-800 transition shadow-lg transform hover:-translate-y-0.5 text-sm">
+                        무료 견적 신청
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="flex items-center lg:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50">사업분야</a>
+                <a href="#portfolio" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50">현장갤러리</a>
+                <a href="#equipment" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50">보유장비</a>
+                <a href="#process" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50">진행절차</a>
+                <a href="#testimonials" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50">고객후기</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-orange-600 font-bold hover:bg-gray-50">견적 신청하기</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-bg h-screen min-h-[600px] flex items-center justify-center relative">
+        <div class="text-center px-4 max-w-4xl mx-auto">
+            <span class="inline-block py-1 px-3 rounded-full bg-orange-600 text-white text-sm font-bold mb-4 animate-bounce">통영 · 거제 · 고성 전지역</span>
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+                철거부터 폐기물 처리까지<br>
+                <span class="text-orange-500">한진건설</span>이 완벽하게 해결합니다
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl mb-10 font-light">
+                복잡한 철거 현장, 골치 아픈 폐기물 처리.<br class="md:hidden">
+                합리적인 비용과 신속한 공기로 고객님의 고민을 덜어드립니다.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-orange-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-700 transition shadow-lg w-full sm:w-auto">
+                    <i class="fas fa-calculator mr-2"></i> 간편 견적 받기
+                </a>
+                <a href="#kakao-section" class="bg-white text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-lg w-full sm:w-auto">
+                    <i class="fas fa-comments mr-2 text-yellow-500"></i> 카톡 상담하기
+                </a>
+            </div>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="absolute bottom-0 w-full bg-slate-900/80 backdrop-blur-sm py-4 border-t border-slate-700">
+            <div class="max-w-7xl mx-auto px-4 flex justify-around text-gray-300 text-sm md:text-base">
+                <div class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 정식 허가 업체</div>
+                <div class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 책임 시공</div>
+                <div class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 전자세금계산서 발행</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-orange-600 font-bold tracking-wide uppercase text-sm">Our Services</h2>
+                <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    한진건설 전문 분야
+                </h3>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    안전을 최우선으로 하며, 환경 법규를 준수하는 깔끔한 뒷마무리를 약속합니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Service 1: Demolition -->
+                <div class="group relative bg-gray-50 rounded-2xl overflow-hidden hover:shadow-2xl transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="철거 현장" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 text-orange-600">
+                            <i class="fas fa-hammer text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-slate-900 mb-3">전문 철거 공사</h4>
+                        <p class="text-gray-600 mb-4">
+                            건물 완파, 내부 인테리어 철거, 부분 철거 등 모든 종류의 철거 작업을 신속하고 안전하게 수행합니다.
+                        </p>
+                        <ul class="space-y-2 text-gray-500 text-sm">
+                            <li><i class="fas fa-check text-orange-500 mr-2"></i>상가 원상복구 철거</li>
+                            <li><i class="fas fa-check text-orange-500 mr-2"></i>주택 및 공장 완파</li>
+                            <li><i class="fas fa-check text-orange-500 mr-2"></i>소음/분진 최소화 공법</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 2: Waste -->
+                <div class="group relative bg-gray-50 rounded-2xl overflow-hidden hover:shadow-2xl transition duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="폐기물 처리" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-slate-900">
+                            <i class="fas fa-truck-loading text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-slate-900 mb-3">건설 폐기물 수거</h4>
+                        <p class="text-gray-600 mb-4">
+                            현장에서 발생하는 각종 건설 폐기물, 혼합 폐기물을 적법한 절차에 따라 신속하게 수거 및 처리합니다.
+                        </p>
+                        <ul class="space-y-2 text-gray-500 text-sm">
+                            <li><i class="fas fa-check text-blue-900 mr-2"></i>1톤/2.5톤/5톤 차량 보유</li>
+                            <li><i class="fas fa-check text-blue-900 mr-2"></i>폐기물 올바로 시스템 등록</li>
+                            <li><i class="fas fa-check text-blue-900 mr-2"></i>당일 배차 및 긴급 수거</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-orange-600 font-bold tracking-wide uppercase text-sm">Portfolio</h2>
+                <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    생생한 작업 현장
+                </h3>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    한진건설의 손길이 닿은 깔끔한 현장을 확인해보세요.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="통영 상가 철거" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div>
+                            <p class="text-orange-400 font-bold text-sm">통영 무전동</p>
+                            <h4 class="text-white font-bold text-xl">상가 인테리어 철거</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1590059298485-6187f54c9c22?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="거제 주택 완파" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div>
+                            <p class="text-orange-400 font-bold text-sm">거제 장승포</p>
+                            <h4 class="text-white font-bold text-xl">노후 주택 완파</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1503708928676-1cb796a0891e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="폐기물 상차" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div>
+                            <p class="text-orange-400 font-bold text-sm">고성 공장</p>
+                            <h4 class="text-white font-bold text-xl">대형 폐기물 처리</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="부분 철거" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div>
+                            <p class="text-orange-400 font-bold text-sm">통영 죽림</p>
+                            <h4 class="text-white font-bold text-xl">아파트 부분 철거</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1591533722709-32247b9735d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="석면 해체" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div>
+                            <p class="text-orange-400 font-bold text-sm">전문 시공</p>
+                            <h4 class="text-white font-bold text-xl">슬레이트 석면 해체</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1426927308491-6380b6a9936f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="부지 정리" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div>
+                            <p class="text-orange-400 font-bold text-sm">마무리</p>
+                            <h4 class="text-white font-bold text-xl">부지 정리 및 평탄화</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-flex items-center text-orange-600 font-bold hover:text-orange-800 transition">
+                    더 많은 시공사례 보기 <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- [NEW] Equipment Section -->
+    <section id="equipment" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Background decorative element -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-orange-600 opacity-10 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-blue-600 opacity-10 blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-orange-500 font-bold tracking-wide uppercase text-sm mb-2">Our Equipment</h2>
+                    <h3 class="text-3xl font-extrabold mb-6 leading-tight">
+                        자사 장비 직접 시공으로<br>
+                        <span class="text-orange-500">비용은 낮추고 효율은 높입니다</span>
+                    </h3>
+                    <p class="text-slate-300 text-lg mb-8 font-light">
+                        한진건설은 외주나 임대가 아닌 자사 소유의 전문 장비를 운용하여 불필요한 중간 마진을 없앴습니다. 작은 현장부터 대형 공사장까지 맞춤형 장비가 투입됩니다.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-orange-500 mt-1 mr-3"></i>
+                            <div>
+                                <strong class="block text-lg">다양한 굴삭기 라인업</strong>
+                                <span class="text-slate-400 text-sm">협소한 실내용 미니 굴삭기(008/017/035)부터 대형 장비까지 현장 상황에 맞춰 배차</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-orange-500 mt-1 mr-3"></i>
+                            <div>
+                                <strong class="block text-lg">신속한 폐기물 운반 차량</strong>
+                                <span class="text-slate-400 text-sm">1톤, 2.5톤, 5톤 집게차 등 자체 운반 차량 보유로 즉시 수거 가능</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-orange-500 mt-1 mr-3"></i>
+                            <div>
+                                <strong class="block text-lg">특수 장비 보유</strong>
+                                <span class="text-slate-400 text-sm">유압 브레이커, 크러셔, 콘크리트 절단기 등 전문 철거 장비 완비</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Equipment Grid Visualization -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-orange-500 transition duration-300">
+                        <i class="fas fa-truck-pickup text-4xl text-orange-500 mb-4"></i>
+                        <h4 class="font-bold text-xl mb-1">덤프트럭</h4>
+                        <p class="text-xs text-slate-400">1t / 2.5t / 5t</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-orange-500 transition duration-300">
+                        <i class="fas fa-snowplow text-4xl text-orange-500 mb-4"></i> <!-- Using snowplow icon as excavator proxy -->
+                        <h4 class="font-bold text-xl mb-1">미니 굴삭기</h4>
+                        <p class="text-xs text-slate-400">008 / 017 / 035</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-orange-500 transition duration-300">
+                        <i class="fas fa-truck-monster text-4xl text-orange-500 mb-4"></i>
+                        <h4 class="font-bold text-xl mb-1">집게차</h4>
+                        <p class="text-xs text-slate-400">5톤 하이카</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-orange-500 transition duration-300">
+                        <i class="fas fa-tools text-4xl text-orange-500 mb-4"></i>
+                        <h4 class="font-bold text-xl mb-1">절단/파쇄기</h4>
+                        <p class="text-xs text-slate-400">전문 철거 장비</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-orange-600 font-bold tracking-wide uppercase text-sm">Working Process</h2>
+                <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    작업 진행 절차
+                </h3>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    복잡한 인허가 신고부터 철거, 폐기물 처리까지 원스톱으로 진행해 드립니다.
+                </p>
+            </div>
+
+            <!-- Process Steps (Responsive) -->
+            <div class="relative">
+                <!-- Connector Line (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 z-0"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="w-16 h-16 bg-slate-800 text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4 font-bold border-4 border-white shadow-md">1</div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">현장 방문 견적</h4>
+                        <p class="text-sm text-gray-500">현장 상황 확인 및<br>최적의 철거 공법 선정</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4 font-bold border-4 border-white shadow-md">2</div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">계약 및 신고</h4>
+                        <p class="text-sm text-gray-500">철거 멸실 신고 및<br>행정 절차 대행</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="w-16 h-16 bg-slate-800 text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4 font-bold border-4 border-white shadow-md">3</div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">철거 공사</h4>
+                        <p class="text-sm text-gray-500">안전 펜스 설치 후<br>본 철거 작업 진행</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4 font-bold border-4 border-white shadow-md">4</div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">폐기물 반출</h4>
+                        <p class="text-sm text-gray-500">건설 폐기물 수거 및<br>올바로 시스템 등록</p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center transform hover:-translate-y-2 transition duration-300">
+                        <div class="w-16 h-16 bg-slate-800 text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4 font-bold border-4 border-white shadow-md">5</div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">완료 및 확인</h4>
+                        <p class="text-sm text-gray-500">뒷정리, 평탄화 및<br>건축물 대장 말소</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-orange-50 p-6 rounded-lg text-center md:flex justify-center items-center gap-4 border border-orange-100">
+                <i class="fas fa-exclamation-circle text-orange-600 text-2xl"></i>
+                <div class="text-left">
+                    <span class="font-bold text-slate-800 block">석면 조사가 필요한가요?</span>
+                    <span class="text-sm text-slate-600">일정 규모 이상의 건축물은 법적으로 석면 사전 조사가 필수입니다. 한진건설이 전문 조사 기관과 연계해 처리해 드립니다.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [NEW] Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-3xl font-extrabold text-gray-900 mb-12">
+                고객들이 증명하는 <span class="text-orange-600">한진건설</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md relative">
+                    <i class="fas fa-quote-left text-4xl text-gray-100 absolute top-4 left-4"></i>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 relative z-10">
+                        "가게 인테리어 철거 때문에 막막했는데, 철거부터 폐기물까지 하루 만에 싹 끝내주셨어요. 견적도 다른 곳보다 합리적이라 바로 계약했습니다."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold mr-3">
+                            김
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">김OO 사장님</p>
+                            <p class="text-xs text-gray-500">통영 무전동 식당 운영</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md relative">
+                    <i class="fas fa-quote-left text-4xl text-gray-100 absolute top-4 left-4"></i>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 relative z-10">
+                        "오래된 주택이라 이웃 민원이 걱정이었는데, 소음이랑 먼지 안 날리게 꼼꼼하게 작업해주셔서 너무 감사했습니다. 뒷마무리가 진짜 깔끔해요."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold mr-3">
+                            이
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">이OO 님</p>
+                            <p class="text-xs text-gray-500">거제시 주택 소유주</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md relative">
+                    <i class="fas fa-quote-left text-4xl text-gray-100 absolute top-4 left-4"></i>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 relative z-10">
+                        "관공서 제출용 폐기물 처리 확인서가 급하게 필요했는데 바로 발급해주셔서 공사 진행에 차질이 없었습니다. 믿고 맡길 수 있는 업체입니다."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold mr-3">
+                            박
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">박OO 현장소장님</p>
+                            <p class="text-xs text-gray-500">고성군 건설 현장</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section: Form & Intro -->
+    <section id="contact" class="py-20 bg-slate-900 text-white relative">
+        <div class="absolute inset-0 bg-pattern opacity-10"></div> <!-- Pattern Placeholder -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Left: Text Info -->
+                <div>
+                    <h2 class="text-3xl font-extrabold mb-6">
+                        견적서와 회사소개서를<br>이메일로 받아보세요
+                    </h2>
+                    <p class="text-slate-300 text-lg mb-8">
+                        현장 사진을 보내주시면 더 정확한 견적이 가능합니다.<br>
+                        아래 정보를 남겨주시면 담당자가 확인 후 <strong>회사소개서와 1차 견적</strong>을 메일로 발송해드립니다.
+                    </p>
+                    
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center mr-4">
+                            <i class="fas fa-phone-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-400">대표 전화</p>
+                            <p class="text-2xl font-bold">010-1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center mr-4">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-400">이메일 문의</p>
+                            <p class="text-xl font-bold">contact@hanjin.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="bg-white rounded-2xl p-8 shadow-2xl text-gray-900">
+                    <form id="leadForm" onsubmit="handleFormSubmit(event)">
+                        <div class="mb-5">
+                            <label for="name" class="block text-sm font-bold text-gray-700 mb-2">담당자 성함</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition outline-none" placeholder="홍길동">
+                        </div>
+                        <div class="mb-5">
+                            <label for="phone" class="block text-sm font-bold text-gray-700 mb-2">연락처</label>
+                            <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition outline-none" placeholder="010-0000-0000">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-bold text-gray-700 mb-2">이메일 (회사소개서 받으실 곳)</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition outline-none" placeholder="example@company.com">
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-orange-600 text-white font-bold py-4 rounded-lg hover:bg-orange-700 transition duration-300 shadow-lg flex justify-center items-center">
+                            <span id="btnText">회사소개서 및 견적 요청하기</span>
+                            <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                        <p class="text-xs text-center text-gray-400 mt-4">
+                            * 개인정보는 상담 목적으로만 활용되며 안전하게 보호됩니다.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kakao & FAQ Section -->
+    <section id="kakao-section" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            
+            <!-- Kakao Banner -->
+            <div class="bg-[#FEE500] rounded-xl p-8 mb-16 flex flex-col md:flex-row items-center justify-between shadow-lg hover:shadow-xl transition">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <div class="bg-white p-3 rounded-xl mr-4">
+                        <i class="fas fa-comment text-[#3c1e1e] text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-[#3c1e1e] font-bold text-xl">카카오톡 채널 상담</h3>
+                        <p class="text-[#3c1e1e] text-sm opacity-80">현장 사진을 보내주시면 5분 내 견적 회신!</p>
+                    </div>
+                </div>
+                <a href="#" onclick="openKakao()" class="bg-[#3c1e1e] text-[#FEE500] px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition">
+                    채널 추가하고 문의하기
+                </a>
+            </div>
+
+            <!-- FAQ -->
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">자주 묻는 질문 (FAQ)</h2>
+            <div class="space-y-4">
+                <!-- Question 1 -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFAQ('faq1')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none bg-white hover:bg-gray-50 transition">
+                        <span class="font-bold text-gray-800 text-lg">Q. 견적은 무료인가요?</span>
+                        <i id="icon-faq1" class="fas fa-chevron-down text-gray-400 chevron"></i>
+                    </button>
+                    <div id="faq1" class="faq-content bg-gray-50">
+                        <div class="px-6 py-5 text-gray-600 border-t border-gray-100">
+                            네, 한진건설의 모든 방문 견적 및 전화 상담은 100% 무료로 진행됩니다. 부담 없이 연락 주시면 현장 상황에 맞는 최적의 비용을 안내해 드립니다.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFAQ('faq2')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none bg-white hover:bg-gray-50 transition">
+                        <span class="font-bold text-gray-800 text-lg">Q. 폐기물 처리 확인서 발급이 가능한가요?</span>
+                        <i id="icon-faq2" class="fas fa-chevron-down text-gray-400 chevron"></i>
+                    </button>
+                    <div id="faq2" class="faq-content bg-gray-50">
+                        <div class="px-6 py-5 text-gray-600 border-t border-gray-100">
+                            물론입니다. 한진건설은 정식 허가 업체로서, 관공서 제출용 폐기물 처리 확인서 및 올바로 시스템 등록 처리가 모두 가능합니다.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFAQ('faq3')" class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none bg-white hover:bg-gray-50 transition">
+                        <span class="font-bold text-gray-800 text-lg">Q. 작업 가능 지역은 어디인가요?</span>
+                        <i id="icon-faq3" class="fas fa-chevron-down text-gray-400 chevron"></i>
+                    </button>
+                    <div id="faq3" class="faq-content bg-gray-50">
+                        <div class="px-6 py-5 text-gray-600 border-t border-gray-100">
+                            주 작업 지역은 통영, 거제, 고성입니다. 그 외 경남 인근 지역의 경우 작업 규모에 따라 출장이 가능하니 유선으로 문의 부탁드립니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-gray-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">한진건설</h3>
+                    <p class="mb-2">대표: 정영민 (예시)</p>
+                    <p class="mb-2">주소: 경상남도 통영시 용남면 OO로 123</p>
+                    <p class="mb-2">사업자등록번호: 000-00-00000</p>
+                    <p>전화: 010-1234-5678 | 팩스: 055-000-0000</p>
+                </div>
+                <div class="flex flex-col md:items-end justify-center">
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube text-2xl"></i></a>
+                    </div>
+                    <p class="text-sm">Copyright © 2025 HANJIN CONSTRUCTION. All rights reserved.</p>
+                    <p class="text-xs mt-2 text-slate-600">Designed by The QR</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Modal for Success Message -->
+    <div id="successModal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="closeModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                            <i class="fas fa-check text-green-600"></i>
+                        </div>
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                접수 완료
+                            </h3>
+                            <div class="mt-2">
+                                <p class="text-sm text-gray-500">
+                                    성공적으로 접수되었습니다.<br>
+                                    입력하신 이메일(<span id="modalEmail" class="font-bold text-gray-700"></span>)로<br>
+                                    <strong>한진건설 회사소개서</strong>가 자동 발송되었습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-orange-600 text-base font-medium text-white hover:bg-orange-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal()">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // FAQ Toggle Logic
+        function toggleFAQ(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            // Toggle current
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.classList.remove('active');
+            } else {
+                // Close all others (Accordion style)
+                document.querySelectorAll('.faq-content').forEach(el => el.classList.remove('active'));
+                document.querySelectorAll('.chevron').forEach(el => el.classList.remove('active'));
+                
+                // Open clicked
+                content.classList.add('active');
+                icon.classList.add('active');
+            }
+        }
+
+        // Form Submit Simulation
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('btnText');
+            const originalText = btn.innerText;
+            const email = document.getElementById('email').value;
+
+            // Loading state
+            btn.innerText = '전송 중...';
+            
+            // Simulate server delay
+            setTimeout(() => {
+                // Reset button
+                btn.innerText = originalText;
+                
+                // Show Success Modal
+                document.getElementById('modalEmail').innerText = email;
+                document.getElementById('successModal').classList.remove('hidden');
+                
+                // Reset Form
+                event.target.reset();
+            }, 1000);
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        function openKakao() {
+            // In a real scenario, this links to: http://pf.kakao.com/_xxxxxx/chat
+            alert('실제 운영 시 카카오톡 채널 링크로 연결됩니다.\n(예: http://pf.kakao.com/_ID)');
+        }
+    </script>
+</body>
+</html>
